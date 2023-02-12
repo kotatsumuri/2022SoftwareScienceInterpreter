@@ -19,6 +19,9 @@ class TestBinExpr(unittest.TestCase):
     def test_div(self):
         self.assertEqual(BinExpr("/", Int(1), Int(2)).evaluate(), 0)
 
+    def test_mod(self):
+        self.assertEqual(BinExpr("%", Int(1), Int(2)).evaluate(), 1)
+
     def test_op(self):
         with self.assertRaises(ValueError):
             BinExpr("~", Int(1), Int(2))

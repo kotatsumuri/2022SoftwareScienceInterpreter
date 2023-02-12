@@ -11,7 +11,7 @@ class BinExpr(Expr):
         self.type = "BinExpr"
 
         match op:
-            case "+" | "-" | "/" | "*":
+            case "+" | "-" | "/" | "*" | "%":
                 self.op = op
             case _:
                 raise ValueError
@@ -38,4 +38,6 @@ class BinExpr(Expr):
                 return self.left_expr.evaluate() // self.right_expr.evaluate()
             case "*":
                 return self.left_expr.evaluate() * self.right_expr.evaluate()
+            case "%":
+                return self.left_expr.evaluate() % self.right_expr.evaluate()
         return 0
