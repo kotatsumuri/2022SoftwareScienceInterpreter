@@ -41,3 +41,11 @@ class BinExpr(Expr):
             case "%":
                 return self.left_expr.evaluate() % self.right_expr.evaluate()
         return 0
+
+    def __str__(self) -> str:
+        return "%s(%s, %s, %s)" % (
+            self.type,
+            self.op,
+            str(self.left_expr),
+            str(self.right_expr),
+        )
