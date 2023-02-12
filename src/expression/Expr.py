@@ -5,5 +5,5 @@ class Expr(ABC):
     type: "Expr"
 
     @abstractmethod
-    def evaluate(self):
+    def evaluate(self) -> int:
         pass
