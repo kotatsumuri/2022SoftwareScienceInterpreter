@@ -16,3 +16,6 @@ class Int(Expr):
 
     def evaluate(self) -> int:
         return self.value
+
+    def __str__(self) -> str:
+        return "%s(%d)" % (self.type, self.value)
