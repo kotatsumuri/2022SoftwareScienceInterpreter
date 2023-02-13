@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 
 class Seq(Expr):
@@ -9,7 +10,7 @@ class Seq(Expr):
         self.type = "Seq"
         self.bodies = bodies
 
-    def evaluate(self, env: dict[str, int | Expr]) -> int:
+    def evaluate(self, env: dict[str, int | Func]) -> int:
         ret = 0
         for expr in self.bodies:
             ret = expr.evaluate(env)

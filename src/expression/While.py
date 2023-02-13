@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 class While(Expr):
     type: str
@@ -10,7 +11,7 @@ class While(Expr):
         self.condition = condition
         self.body = body
     
-    def evaluate(self, env: dict[str, int | Expr]) -> int:
+    def evaluate(self, env: dict[str, int | Func]) -> int:
         ret = 0
         while self.condition.evaluate(env):
             ret = self.body.evaluate(env)

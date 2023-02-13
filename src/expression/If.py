@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 
 class If(Expr):
@@ -13,7 +14,7 @@ class If(Expr):
         self.thenClause = thenClause
         self.elseClause = elseClause
 
-    def evaluate(self, env: dict[str, int | Expr]) -> int:
+    def evaluate(self, env: dict[str, int | Func]) -> int:
         if self.condition.evaluate(env):
             return self.thenClause.evaluate(env)
         return self.elseClause.evaluate(env)

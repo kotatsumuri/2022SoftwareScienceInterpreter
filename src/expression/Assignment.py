@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 
 class Assignment(Expr):
@@ -11,6 +12,6 @@ class Assignment(Expr):
         self.name = name
         self.expression = expression
 
-    def evaluate(self, env: dict[str, int | Expr]) -> int | Expr:
+    def evaluate(self, env: dict[str, int | Func]) -> int | Expr:
         env[self.name] = self.expression.evaluate(env)
         return env[self.name]

@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 
 class BinExpr(Expr):
@@ -28,7 +29,7 @@ class BinExpr(Expr):
             case _:
                 raise TypeError
 
-    def evaluate(self, env: dict[str, int | Expr]) -> int | bool:
+    def evaluate(self, env: dict[str, int | Func]) -> int | bool:
         match self.op:
             case "+":
                 return self.left_expr.evaluate(env) + self.right_expr.evaluate(env)

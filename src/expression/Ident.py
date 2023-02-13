@@ -1,4 +1,5 @@
 from src.expression.Expr import Expr
+from src.expression.Func import Func
 
 
 class Ident(Expr):
@@ -9,5 +10,5 @@ class Ident(Expr):
         self.type = "Ident"
         self.name = name
 
-    def evaluate(self, env: dict[str, int | Expr]) -> int:
+    def evaluate(self, env: dict[str, int | Func]) -> int:
         return env[self.name]  # type: ignore
