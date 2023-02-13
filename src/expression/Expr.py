@@ -1,9 +1,10 @@
 from abc import ABC, abstractmethod
+from typing import TypeVar
+
+Self = TypeVar("Self", bound="Expr")
 
 
 class Expr(ABC):
-    type: "Expr"
-
     @abstractmethod
-    def evaluate(self, env: dict[str, int]) -> int:
+    def evaluate(self, env: dict[str, int | Self]) -> int:
         pass

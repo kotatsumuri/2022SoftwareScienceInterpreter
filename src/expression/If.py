@@ -13,7 +13,7 @@ class If(Expr):
         self.thenClause = thenClause
         self.elseClause = elseClause
 
-    def evaluate(self, env: dict[str, int]) -> int:
+    def evaluate(self, env: dict[str, int | Expr]) -> int:
         if self.condition.evaluate(env):
             return self.thenClause.evaluate(env)
         return self.elseClause.evaluate(env)

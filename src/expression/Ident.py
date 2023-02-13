@@ -9,5 +9,5 @@ class Ident(Expr):
         self.type = "Ident"
         self.name = name
 
-    def evaluate(self, env: dict[str, int]) -> int:
-        return env[self.name]
+    def evaluate(self, env: dict[str, int | Expr]) -> int:
+        return env[self.name]  # type: ignore

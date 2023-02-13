@@ -9,7 +9,7 @@ class Seq(Expr):
         self.type = "Seq"
         self.bodies = bodies
 
-    def evaluate(self, env: dict[str, int]) -> int:
+    def evaluate(self, env: dict[str, int | Expr]) -> int:
         ret = 0
         for expr in self.bodies:
             ret = expr.evaluate(env)

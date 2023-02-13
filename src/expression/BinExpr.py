@@ -28,7 +28,7 @@ class BinExpr(Expr):
             case _:
                 raise TypeError
 
-    def evaluate(self, env: dict[str, int]) -> int | bool:
+    def evaluate(self, env: dict[str, int | Expr]) -> int | bool:
         match self.op:
             case "+":
                 return self.left_expr.evaluate(env) + self.right_expr.evaluate(env)

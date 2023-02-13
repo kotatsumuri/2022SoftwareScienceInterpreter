@@ -10,7 +10,7 @@ class While(Expr):
         self.condition = condition
         self.body = body
     
-    def evaluate(self, env: dict[str, int]) -> int:
+    def evaluate(self, env: dict[str, int | Expr]) -> int:
         ret = 0
         while self.condition.evaluate(env):
             ret = self.body.evaluate(env)
