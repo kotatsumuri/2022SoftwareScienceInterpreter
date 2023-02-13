@@ -1,14 +1,13 @@
 from src.expression.Expr import Expr
-from src.expression.BinExpr import BinExpr
 
 
 class If(Expr):
     type: str
-    condition: BinExpr
+    condition: Expr
     thenClause: Expr
     elseClause: Expr
 
-    def __init__(self, condition: BinExpr, thenClause: Expr, elseClause: Expr):
+    def __init__(self, condition: Expr, thenClause: Expr, elseClause: Expr):
         self.type = "If"
         self.condition = condition
         self.thenClause = thenClause
