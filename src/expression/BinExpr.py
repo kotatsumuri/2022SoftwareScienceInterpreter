@@ -28,30 +28,30 @@ class BinExpr(Expr):
             case _:
                 raise TypeError
 
-    def evaluate(self) -> int | bool:
+    def evaluate(self, env: dict[str, int]) -> int | bool:
         match self.op:
             case "+":
-                return self.left_expr.evaluate() + self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) + self.right_expr.evaluate(env)
             case "-":
-                return self.left_expr.evaluate() - self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) - self.right_expr.evaluate(env)
             case "/":
-                return self.left_expr.evaluate() // self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) // self.right_expr.evaluate(env)
             case "*":
-                return self.left_expr.evaluate() * self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) * self.right_expr.evaluate(env)
             case "%":
-                return self.left_expr.evaluate() % self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) % self.right_expr.evaluate(env)
             case "<":
-                return self.left_expr.evaluate() < self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) < self.right_expr.evaluate(env)
             case ">":
-                return self.left_expr.evaluate() > self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) > self.right_expr.evaluate(env)
             case "<=":
-                return self.left_expr.evaluate() <= self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) <= self.right_expr.evaluate(env)
             case ">=":
-                return self.left_expr.evaluate() >= self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) >= self.right_expr.evaluate(env)
             case "==":
-                return self.left_expr.evaluate() == self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) == self.right_expr.evaluate(env)
             case "!=":
-                return self.left_expr.evaluate() != self.right_expr.evaluate()
+                return self.left_expr.evaluate(env) != self.right_expr.evaluate(env)
         return 0
 
     def __str__(self) -> str:

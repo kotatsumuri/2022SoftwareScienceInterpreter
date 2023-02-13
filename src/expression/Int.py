@@ -14,7 +14,7 @@ class Int(Expr):
             case _:
                 raise TypeError("Type error.")
 
-    def evaluate(self) -> int:
+    def evaluate(self, env: dict[str, int]) -> int:
         return self.value
 
     def __str__(self) -> str:
