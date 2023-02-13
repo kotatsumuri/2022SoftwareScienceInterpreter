@@ -17,4 +17,4 @@ class Call(Expr):
         new_env: dict[str, int | Func] = deepcopy(env)
         for arg, param in zip(self.args, env[self.name].params):  # type: ignore
             new_env[param] = arg.evaluate(env)
-        return env[self.name].body.evaluate()  # type: ignore
+        return env[self.name].body.evaluate(new_env)  # type: ignore
