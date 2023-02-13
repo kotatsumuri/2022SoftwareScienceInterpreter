@@ -13,4 +13,4 @@ class TestInt(unittest.TestCase):
 
     def test_str(self):
         with self.assertRaises(TypeError):
-            Int("zero")
+            Int("zero")  # type: ignore

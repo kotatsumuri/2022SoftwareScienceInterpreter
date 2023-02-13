@@ -24,6 +24,34 @@ class TestBinExpr(unittest.TestCase):
     def test_mod(self):
         self.assertEqual(BinExpr("%", Int(1), Int(2)).evaluate(env), 1)
 
+    def test_eq(self):
+        self.assertEqual(BinExpr("==", Int(1), Int(2)).evaluate(env), 0)
+        self.assertEqual(BinExpr("==", Int(1), Int(1)).evaluate(env), 1)
+
+    def test_neq(self):
+        self.assertEqual(BinExpr("!=", Int(1), Int(2)).evaluate(env), 1)
+        self.assertEqual(BinExpr("!=", Int(1), Int(1)).evaluate(env), 0)
+
+    def test_lesser(self):
+        self.assertEqual(BinExpr("<", Int(1), Int(2)).evaluate(env), 1)
+        self.assertEqual(BinExpr("<", Int(1), Int(1)).evaluate(env), 0)
+        self.assertEqual(BinExpr("<", Int(2), Int(1)).evaluate(env), 0)
+
+    def test_greater(self):
+        self.assertEqual(BinExpr(">", Int(1), Int(2)).evaluate(env), 0)
+        self.assertEqual(BinExpr(">", Int(1), Int(1)).evaluate(env), 0)
+        self.assertEqual(BinExpr(">", Int(2), Int(1)).evaluate(env), 1)
+
+    def test_leq(self):
+        self.assertEqual(BinExpr("<=", Int(1), Int(2)).evaluate(env), 1)
+        self.assertEqual(BinExpr("<=", Int(1), Int(1)).evaluate(env), 1)
+        self.assertEqual(BinExpr("<=", Int(2), Int(1)).evaluate(env), 0)
+
+    def test_geq(self):
+        self.assertEqual(BinExpr(">=", Int(1), Int(2)).evaluate(env), 0)
+        self.assertEqual(BinExpr(">=", Int(1), Int(1)).evaluate(env), 1)
+        self.assertEqual(BinExpr(">=", Int(2), Int(1)).evaluate(env), 1)
+
     def test_op(self):
         with self.assertRaises(ValueError):
             BinExpr("~", Int(1), Int(2))
