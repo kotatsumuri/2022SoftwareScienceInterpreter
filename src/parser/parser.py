@@ -16,7 +16,7 @@ def parser(lines: list[list[str]]) -> Seq:
     cmd = []
     while len(lines) > 0:
         line = lines[0]
-        
+
         while line[0] == "" and len(line) > 0:
             del line[0]
         if len(line) == 0:
@@ -39,6 +39,12 @@ def parser(lines: list[list[str]]) -> Seq:
                     elseClause = parser(lines)
                     del lines[0]
                 cmd.append(If(condition, thenClause, elseClause))
+            case "while":
+                condition = BinExprParser(line[1:]).parser()
+                del lines[0]
+                body = parser(lines)
+                cmd.append(While(condition, body))
+                del lines[0]
             case "end" | "else":
                 return Seq(*cmd)
             case _:
