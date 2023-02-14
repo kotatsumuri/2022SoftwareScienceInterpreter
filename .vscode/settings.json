@@ -4,7 +4,7 @@
   "python.formatting.provider": "black",
   "[python]": {
     "editor.defaultFormatter": null,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
   "python.testing.unittestArgs": ["-v", "-s", "./test", "-p", "test*.py"],
   "python.testing.pytestEnabled": false,
