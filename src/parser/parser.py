@@ -10,6 +10,7 @@ from src.expression.If import If
 from src.expression.While import While
 from src.expression.Func import Func
 from src.expression.Call import Call
+from src.expression.Print import Print
 from src.parser.BinExprParser import BinExprParser
 from src.parser.AssignmentParser import AssignmentParser
 
@@ -19,7 +20,7 @@ def parser(lines: list[list[str]]) -> Seq:
     while len(lines) > 0:
         line = lines[0]
 
-        while line[0] == "" and len(line) > 0:
+        while len(line) > 0 and line[0] == "":
             del line[0]
         if len(line) == 0:
             del lines[0]
@@ -52,7 +53,10 @@ def parser(lines: list[list[str]]) -> Seq:
                 cmd.append(Func(name, params, body))
                 del lines[0]
             case "end" | "else":
-                return Seq(*cmd)    
+                return Seq(*cmd) 
+            case "print":
+                cmd.append(Print(parser([line[1:]])))
+                del lines[0]
             case _:
                 if len(line) > 1 and line[1] == "=":
                     cmd.append(AssignmentParser(line).parser())
