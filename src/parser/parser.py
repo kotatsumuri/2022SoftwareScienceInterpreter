@@ -9,6 +9,7 @@ from src.expression.While import While
 from src.expression.Func import Func
 from src.expression.Call import Call
 from src.parser.BinExprParser import BinExprParser
+from src.parser.AssignmentParser import AssignmentParser
 
 
 def parser(code: list[str]) -> Seq:
@@ -18,6 +19,10 @@ def parser(code: list[str]) -> Seq:
     fns = []
     cmd = []
     for line in lines:
-        cmd.append(BinExprParser(line).parser())
+        match line[0]:
+            case "var":
+                cmd.append(AssignmentParser(line[1:]).parser())
+            case _:
+                cmd.append(BinExprParser(line).parser())
 
     return Seq(*cmd)
