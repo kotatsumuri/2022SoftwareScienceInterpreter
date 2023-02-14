@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from src.expression.Expr import Expr
 from src.expression.Int import Int
 from src.expression.BinExpr import BinExpr
@@ -45,8 +47,15 @@ def parser(lines: list[list[str]]) -> Seq:
                 body = parser(lines)
                 cmd.append(While(condition, body))
                 del lines[0]
+            case "fn":
+                name = line[1]
+                params = [p.strip(',') for p in deepcopy(line[3:-1])]
+                del lines[0]
+                body = parser(lines)
+                cmd.append(Func(name, params, body))
+                del lines[0]
             case "end" | "else":
-                return Seq(*cmd)
+                return Seq(*cmd)    
             case _:
                 cmd.append(BinExprParser(line).parser())
                 del lines[0]

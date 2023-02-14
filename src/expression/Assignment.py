@@ -15,3 +15,6 @@ class Assignment(Expr):
     def evaluate(self, env: dict[str, int | Func]) -> int | Expr:
         env[self.name] = self.expression.evaluate(env)
         return env[self.name]
+
+    def __str__(self):
+        return "Assignment(name:%s, Expr:%s)" % (self.name, str(self.expression))

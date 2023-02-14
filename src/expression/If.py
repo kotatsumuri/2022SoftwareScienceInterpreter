@@ -18,3 +18,6 @@ class If(Expr):
         if self.condition.evaluate(env):
             return self.thenClause.evaluate(env)
         return self.elseClause.evaluate(env)
+
+    def __str__(self):
+        return "If(condition:%s, thenClause:%s, elseClause:%s)" % (str(self.condition), str(self.thenClause), str(self.elseClause))

@@ -17,3 +17,5 @@ class While(Expr):
             ret = self.body.evaluate(env)
         return ret
         
+    def __str__(self):
+        return "While(condition:%s, body:%s)" % (str(self.condition), str(self.body))

@@ -18,3 +18,6 @@ class Call(Expr):
         for arg, param in zip(self.args, env[self.name].params):  # type: ignore
             new_env[param] = arg.evaluate(env)
         return env[self.name].body.evaluate(new_env)  # type: ignore
+
+    def __str__(self):
+        return "Call(name:%s, args:%s)" % (self.name, str([str(a) for a in self.args]))

@@ -12,3 +12,6 @@ class Ident(Expr):
 
     def evaluate(self, env: dict[str, int | Func]) -> int:
         return env[self.name]  # type: ignore
+
+    def __str__(self):
+        return "Ident(name:%s)" % (self.name)

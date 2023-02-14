@@ -15,3 +15,9 @@ class Seq(Expr):
         for expr in self.bodies:
             ret = expr.evaluate(env)
         return ret
+
+    def __str__(self):
+        ret = "Seq("
+        for body in self.bodies:
+            ret += str(body) + ","
+        return ret + ")"
