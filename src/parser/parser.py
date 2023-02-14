@@ -26,9 +26,6 @@ def parser(lines: list[list[str]]) -> Seq:
             continue
 
         match line[0]:
-            case "var":
-                cmd.append(AssignmentParser(line[1:]).parser())
-                del lines[0]
             case "if":
                 condition = BinExprParser(line[1:]).parser()
                 del lines[0]
@@ -57,7 +54,11 @@ def parser(lines: list[list[str]]) -> Seq:
             case "end" | "else":
                 return Seq(*cmd)    
             case _:
-                cmd.append(BinExprParser(line).parser())
-                del lines[0]
+                if len(line) > 1 and line[1] == "=":
+                    cmd.append(AssignmentParser(line).parser())
+                    del lines[0]
+                else:
+                    cmd.append(BinExprParser(line).parser())
+                    del lines[0]
 
     return Seq(*cmd)

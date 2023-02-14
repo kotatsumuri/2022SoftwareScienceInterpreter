@@ -19,9 +19,9 @@ class TestIfParser(unittest.TestCase):
     
     def test_if_if_else(self):
         code ="if 1 == 1\n" \
-              "    var a = 0\n" \
+              "    a = 0\n" \
               "    if a == 0\n" \
-              "        var a = a + 1\n" \
+              "        a = a + 1\n" \
               "    end\n" \
               "else\n" \
               "end"
