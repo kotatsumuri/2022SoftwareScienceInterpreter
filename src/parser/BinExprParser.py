@@ -1,6 +1,7 @@
 from src.expression.Expr import Expr
 from src.expression.Int import Int
 from src.expression.BinExpr import BinExpr
+from src.expression.Ident import Ident
 
 
 class BinExprParser:
@@ -51,6 +52,8 @@ class BinExprParser:
     def factor(self) -> Expr:
         if is_num(self.line[0]):
             return self.number()
+        elif self.line[0].isalpha():
+            return self.var()
 
         self.line = self.line[1:]
         ret = self.expr()
@@ -59,6 +62,11 @@ class BinExprParser:
 
     def number(self) -> Expr:
         ret = Int(int(self.line[0]))
+        self.line = self.line[1:]
+        return ret
+
+    def var(self) -> Expr:
+        ret = Ident(self.line[0])
         self.line = self.line[1:]
         return ret
 

@@ -14,3 +14,9 @@ class TestAssignmentParser(unittest.TestCase):
         code = ["var a = 1 + 1", "var b = 2 + 1", "var a = 3 + 2"]
         parser(code).evaluate(env)
         self.assertEqual(env, {"a": 5, "b": 3})
+
+    def test_call_var(self):
+        env = {}
+        code = ["var a = 0", "var a = a + 1"]
+        parser(code).evaluate(env)
+        self.assertEqual(env, {"a": 1})
