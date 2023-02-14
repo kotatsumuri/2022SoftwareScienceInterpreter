@@ -12,7 +12,25 @@ class BinExprParser:
         self.line = line
 
     def parser(self) -> Expr:
-        return self.comp()
+        return self.o()
+    
+    def o(self) -> Expr:
+        left_expr = self.a()
+        while len(self.line) > 0 and self.line[0] == "|":
+            op = self.line[0]
+            self.line = self.line[1:]
+            right_expr = self.a()
+            left_expr = BinExpr(op, left_expr, right_expr)
+        return left_expr
+    
+    def a(self) -> Expr:
+        left_expr = self.comp()
+        while len(self.line) > 0 and self.line[0] == "&":
+            op = self.line[0]
+            self.line = self.line[1:]
+            right_expr = self.comp()
+            left_expr = BinExpr(op, left_expr, right_expr)
+        return left_expr
 
     def comp(self) -> Expr:
         left_expr = self.expr()
