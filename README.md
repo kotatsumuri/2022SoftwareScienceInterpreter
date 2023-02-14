@@ -197,3 +197,44 @@ python exec.py コードファイル名
 ```
 
 ※ python のバージョンは 3.10 以上を使用してください
+
+## ディレクトリ構成
+
+```
+.
+├── README.md
+├── exec.py // 実行コード
+├── fib // サンプルコード
+├── src // 実装コード
+│   ├── expression // 表現実装コード
+│   │   ├── Assignment.py // 変数定義
+│   │   ├── BinExpr.py // 四則演算 & 比較演算
+│   │   ├── Call.py // 関数呼び出し
+│   │   ├── Expr.py // 基底クラス
+│   │   ├── Func.py // 関数定義
+│   │   ├── Ident.py // 変数呼び出し
+│   │   ├── If.py // if文
+│   │   ├── Int.py // 定数
+│   │   ├── Print.py // print文
+│   │   ├── Seq.py // 連接
+│   │   └── While.py // while文
+│   └── parser //　構文解析コード
+│       ├── AssignmentParser.py // 変数定義の細かい構文解析
+│       ├── BinExprParser.py // 四則演算 & 比較演算の細かい構文解析
+│       ├── interpreter.py // 行分割 & トークン分割
+│       └── parser.py // 全体の構文解析
+└── test // テストコード
+    ├── testAssignment.py
+    ├── testAssignmentParser.py
+    ├── testBinExpr.py
+    ├── testBinExprParser.py
+    ├── testFuncCall.py
+    ├── testFuncParser.py
+    ├── testIdent.py
+    ├── testIf.py
+    ├── testIfParser.py
+    ├── testInt.py
+    ├── testSeq.py
+    ├── testWhile.py
+    └── testWhileParser.py
+```
