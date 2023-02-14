@@ -32,9 +32,9 @@ def parser(lines: list[list[str]]) -> Seq:
                 del lines[0]
                 thenClause = parser(lines)
                 elseClause = Int(0)
-                if lines[0] == "end":
+                if lines[0][0] == "end":
                     del lines[0]
-                if lines[0] == "else":
+                if lines[0][0] == "else":
                     del lines[0]
                     elseClause = parser(lines)
                     del lines[0]
